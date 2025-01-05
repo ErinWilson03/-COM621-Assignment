@@ -80,9 +80,10 @@ class ApplicationController extends Controller
     public function apply(string $vacancy_reference)
     {
         $vacancy = Vacancy::where('reference_number', $vacancy_reference)->firstOrFail();
-        $user = User::where('email', $vacancy->email)->first();
+        $user = auth()->user();
+        $application = new Application;
 
-        return view('applications.apply', ['vacancy' => $vacancy, 'user' => $user]);
+        return view('applications.apply', ['vacancy' => $vacancy, 'user' => $user, 'application'=> $application]);
     }
 
     /**
@@ -97,7 +98,7 @@ class ApplicationController extends Controller
             'mobile_number' => ['required', 'string', 'min:10'],
             'supporting_statement' => ['nullable', 'string', 'max:1000'],
             'cv_path' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:2048'],
-            'vacancy_reference' => ['required', 'exists:vacancies,id'],
+            'vacancy_reference' => ['required', 'exists:vacancies,reference_number'],
             'user_id' => ['required', 'exists:users,id'],
         ]);
 
@@ -109,9 +110,9 @@ class ApplicationController extends Controller
         }
 
         // Create the application record in the database
-        Application::create($data);
+        $application = Application::create($data);
 
-        return redirect()->route('applications.index')->with('success', 'Your application has been submitted successfully!');
+        return redirect()->route('applications.show', ['application', $application->id])->with('success', 'Your application has been submitted successfully!');
     }
 
 

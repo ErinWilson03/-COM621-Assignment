@@ -6,41 +6,37 @@
 <div class="flex gap-4 mt-4">
     <div class="w-1/2">
         <x-ui.form.label for="industry">Industry</x-ui.form.label>
-        <select label="Industry" name="industry" class="w-full p-2 border rounded text-blue-900"
-            value="{{ old('industry', $vacancy->industry) }}">
+        <select label="Industry" name="industry" class="w-full p-2 border rounded text-blue-900">
             @foreach (App\Enums\IndustryEnum::cases() as $industry)
-                <option value={{ request('industry') == $industry->value ? 'selected' : '' }}>
-                    {{ $industry->value }}
+                <option value="{{ $industry->value }}" {{ old('industry', $vacancy->industry->value) == $industry->value ? 'selected' : '' }}>
+                    {{ $industry->name }}
                 </option>
             @endforeach
         </select>
     </div>
-
+    
     <div class="w-1/2">
         <x-ui.form.label for="vacancy_type">Vacancy Type</x-ui.form.label>
-        <select label="Vacancy Type" name="vacancy_type" class="w-full p-2 border rounded text-blue-900"
-            value="{{ old('vacancy_type', $vacancy->vacancy_type) }}">
-            @foreach (App\Enums\VacancyTypeEnum::cases() as $type)
-                <option value={{ request('vacancy_type') == $type->value ? 'selected' : '' }}>
-                    {{ $type->value }}
+        <select label="Vacancy Type" name="vacancy_type" class="w-full p-2 border rounded text-blue-900">
+            @foreach (App\Enums\VacancyTypeEnum::cases() as $vacancy_type)
+                <option value="{{ $vacancy_type->value }}" {{ old('vacancy_type', $vacancy->vacancy_type->value) == $vacancy_type->value ? 'selected' : '' }}>
+                    {{ $vacancy_type->name }}
                 </option>
             @endforeach
         </select>
     </div>
-</div>
-
-<div class="flex gap-4 mt-4">
+    
     <div class="w-1/2">
         <x-ui.form.label for="location">Location</x-ui.form.label>
-        <select name="location" class="w-full p-2 border rounded text-blue-900"
-            value="{{ old('location', $vacancy->location) }}">
+        <select name="location" class="w-full p-2 border rounded text-blue-900">
             @foreach (App\Enums\LocationEnum::cases() as $location)
-                <option value={{ request('location') == $location->value ? 'selected' : '' }}>
-                    {{ $location->value }}
+                <option value="{{ $location->value }}" {{ old('location', $vacancy->location->value) == $location->value ? 'selected' : '' }}>
+                    {{ $location->name }}
                 </option>
             @endforeach
         </select>
     </div>
+    
 
     <div class="w-1/2">
         <x-ui.form.input label="Salary" name="salary" type="text" value="{{ old('salary', $vacancy->salary) }}" />
@@ -63,12 +59,12 @@
 {{-- Textareas for Description and Skills Required --}}
 <div class="mt-4">
     <x-ui.form.textarea label="Description" name="description" rows="6"
-    >{{ old('description', $vacancy->description) }}</x-ui.form.textarea>
+    value="{{ old('description', $vacancy->description) }}"></x-ui.form.textarea>
 </div>
 
 <div class="mt-4">
     <x-ui.form.textarea label="Skills Required" name="skills_required" rows="4"
-        value="">{{ old('skills_required', $vacancy->skills_required) }}</x-ui.form.textarea>
+        value="{{ old('skills_required', $vacancy->skills_required) }}"></x-ui.form.textarea>
 </div>
 
 {{-- Company Dropdown --}}

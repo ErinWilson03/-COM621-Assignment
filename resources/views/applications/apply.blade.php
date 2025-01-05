@@ -54,15 +54,15 @@
 
     <x-ui.card>
         <form method="POST" action="{{ route('applications.store') }}" enctype="multipart/form-data">
-            <input name="vacancy_reference" value={{$vacancy->id}} hidden>
-            <input name="user_id" value={{$user->id}}>
+            {{-- Form needs the reference number and user id, so these fields are included, but hidden --}}
+            <input name="vacancy_reference" value={{$vacancy->reference_number}} hidden>
+            <input name="user_id" value={{$user->id}} hidden>
             @csrf
             @include('applications._inputs')
             <div class="flex mt-4 gap-4 items-center">
                 <x-ui.button variant="blue" type="submit">Submit Application</x-ui.button>
-                {{-- TODO: add a modal or something saying that your details will not be saved if you leave this page --}}
                 <x-ui.link variant="blue"
-                    href="{{ route('vacancies.show', ['id', $vacancy->id]) }}">Cancel</x-ui.link>
+                    href="{{ route('vacancies.show', $vacancy->reference_number) }}">Cancel</x-ui.link>
             </div>
         </form>
     </x-ui.card>

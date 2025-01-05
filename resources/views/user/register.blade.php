@@ -10,12 +10,12 @@
 
             <!-- name -->
             <div class="mt-2">
-                <x-ui.form.input label="Name" name="name" type="text" />
+                <x-ui.form.input label="Name" name="name" type="text" value="{{ old('name') }}"/>
             </div>
 
             <!-- email -->
             <div class="mt-2">
-                <x-ui.form.input label="Email" name="email" type="email" />
+                <x-ui.form.input label="Email" name="email" type="email" value="{{ old('email') }}"/>
             </div>
 
             <!-- passwords -->
@@ -30,7 +30,7 @@
 
             <!-- submit -->
             <div class="mt-4">
-                <x-ui.button variant="dark" type="submit">Login</x-ui.button>
+                <x-ui.button variant="dark" type="submit">Register and Login</x-ui.button>
                 <x-ui.link variant="light" href="{{ route('home') }}">Cancel</x-ui.link>
             </div>
 

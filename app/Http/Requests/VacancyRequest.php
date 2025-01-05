@@ -21,7 +21,7 @@ class VacancyRequest extends FormRequest
             'application_open_date' => ['required', 'date'],
             'application_close_date' => ['required', 'date', 'after:application_open_date'],
             'location' => [Rule::enum(LocationEnum::class)],
-            'salary'=>['nullable', 'decimal'],
+            'salary'=>['nullable'],
             'industry' => [Rule::enum(IndustryEnum::class)],
             'vacancy_type' => [Rule::enum(VacancyTypeEnum::class)],
         ];

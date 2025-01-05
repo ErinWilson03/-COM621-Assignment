@@ -135,8 +135,6 @@
                                 <p class="text-blue-500 mb-4">{{ Str::limit($vacancy->description, 150) }}</p>
 
                                 <div class="flex flex-col gap-2">
-                                    <p class="w-fit text-sm"><strong>Company:</strong>
-                                        {{ $vacancy->company->company_name }}</p>
                                     <p class="w-fit text-sm"><strong>Industry:</strong> {{ $vacancy->industry }}</p>
                                     <p class="w-fit text-sm"><strong>Vacancy Type:
                                         </strong>{{ ucfirst($vacancy->vacancy_type->value) }}</p>
@@ -160,10 +158,10 @@
                                             Vacancy Unavailable
                                         </a>
                                     @else
-                                            <a href="{{ route('vacancies.show', $vacancy->reference_number) }}"
-                                                class="w-full text-white bg-blue-900 hover:bg-blue-700 px-4 py-2 rounded-lg flex items-center justify-center">
-                                                View Vacancy
-                                            </a>
+                                        <a href="{{ route('vacancies.show', $vacancy->reference_number) }}"
+                                            class="w-full text-white bg-blue-900 hover:bg-blue-700 px-4 py-2 rounded-lg flex items-center justify-center">
+                                            View Vacancy
+                                        </a>
                                     @endif
                                 </div>
                             </div>
@@ -177,9 +175,11 @@
                 </div>
 
                 <!-- Pagination -->
-                <div class="mt-3 float-right">
-                    @include('vacancies._pagination')
-                </div>
+                @if ($vacancies->isNotEmpty())
+                    <div class="mt-3 float-right">
+                        @include('vacancies._pagination')
+                    </div>
+                @endif
 
             </div>
 

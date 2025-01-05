@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Enums\Role;
 
 class UserController extends Controller
 {
@@ -22,8 +23,10 @@ class UserController extends Controller
         $credentials = $request->validate([
             'name'  => ['required'],
             'email' => ['required', 'email', 'unique:users'],
-            'password' => ['confirmed', 'min:6']
+            'password' => ['confirmed', 'min:6'],
         ]);
+
+        $credentials['role'] = Role::USER;
 
         // create user
         $user = User::create($credentials);

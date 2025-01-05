@@ -77,7 +77,7 @@
                 <h2>{{ $vacancy->title }} </h2>
             </div>
             <div class="w1/4">
-                <a href="{{ route('vacancies.show', $application->vacancy_reference) }}"
+                <a href="{{ route('vacancies.show', $vacancy->reference_number) }}"
                     class="float-right w-full text-white bg-blue-900 hover:bg-blue-700 px-4 py-2 rounded-lg flex items-center justify-center">
                     View Original Vacancy Listing
                 </a>

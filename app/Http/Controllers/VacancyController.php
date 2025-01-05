@@ -77,7 +77,7 @@ class VacancyController extends Controller
             'industries' => IndustryEnum::cases(),
             'vacancyTypes' => VacancyTypeEnum::cases(),
             'locations' => LocationEnum::cases(),
-            'companies' => Company::all()->pluck('company_name', 'id'),
+            'companies' => Company::all()->pluck('name', 'id'),
         ];
 
         return view('vacancies.create', $data);
@@ -96,16 +96,21 @@ class VacancyController extends Controller
                 'description' => ['nullable', 'string'],
                 'application_open_date' => ['required', 'date'],
                 'application_close_date' => ['required', 'date', 'after:application_open_date'],
-                'location' => [Rule::enum(LocationEnum::class)],
+                'location' => ['required', Rule::enum(LocationEnum::class)],
                 'salary' => ['nullable'],
-                'industry' => [Rule::enum(IndustryEnum::class)],
-                'vacancy_type' => [Rule::enum(VacancyTypeEnum::class)],
+                'industry' => ['required', Rule::enum(IndustryEnum::class)],
+                'vacancy_type' => ['required', Rule::enum(VacancyTypeEnum::class)],
             ]
         );
 
         $data['reference_number'] = $this->generateReferenceNumber(); // add the reference number to the data
 
-        Vacancy::create($data);
+        $vacancy = Vacancy::create($data);
+        $vacancy->save();
+
+        if (!$vacancy) {
+            return redirect()->route('vacancies.index')->with('error', 'Error: vacancy not created. Try again later.');
+        }
 
         return redirect()->route('vacancies.index')->with('success', 'Vacancy created successfully!');
     }
