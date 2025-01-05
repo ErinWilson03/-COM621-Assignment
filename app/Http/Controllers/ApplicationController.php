@@ -94,7 +94,7 @@ class ApplicationController extends Controller
         // Validate the incoming request
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:applications,email'],
+            'email' => ['required', 'email'],
             'mobile_number' => ['required', 'string', 'min:10'],
             'supporting_statement' => ['nullable', 'string', 'max:1000'],
             'cv_path' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:2048'],
@@ -112,7 +112,7 @@ class ApplicationController extends Controller
         // Create the application record in the database
         $application = Application::create($data);
 
-        return redirect()->route('applications.show', ['application', $application->id])->with('success', 'Your application has been submitted successfully!');
+        return redirect()->route('applications.index')->with('success', 'Your application has been submitted successfully!');
     }
 
 

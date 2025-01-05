@@ -7,7 +7,7 @@
     <div class="w-1/2">
         <x-ui.form.label for="industry">Industry</x-ui.form.label>
         <select label="Industry" name="industry" class="w-full p-2 border rounded text-blue-900">
-            @foreach (App\Enums\IndustryEnum::cases() as $industry)
+            @foreach ($industries as $industry)
                 <option value="{{ $industry->value }}" {{ old('industry', $vacancy->industry->value) == $industry->value ? 'selected' : '' }}>
                     {{ $industry->name }}
                 </option>
@@ -18,7 +18,7 @@
     <div class="w-1/2">
         <x-ui.form.label for="vacancy_type">Vacancy Type</x-ui.form.label>
         <select label="Vacancy Type" name="vacancy_type" class="w-full p-2 border rounded text-blue-900">
-            @foreach (App\Enums\VacancyTypeEnum::cases() as $vacancy_type)
+            @foreach ($vacancyTypes as $vacancy_type)
                 <option value="{{ $vacancy_type->value }}" {{ old('vacancy_type', $vacancy->vacancy_type->value) == $vacancy_type->value ? 'selected' : '' }}>
                     {{ $vacancy_type->name }}
                 </option>
@@ -29,7 +29,7 @@
     <div class="w-1/2">
         <x-ui.form.label for="location">Location</x-ui.form.label>
         <select name="location" class="w-full p-2 border rounded text-blue-900">
-            @foreach (App\Enums\LocationEnum::cases() as $location)
+            @foreach ($locations as $location)
                 <option value="{{ $location->value }}" {{ old('location', $vacancy->location->value) == $location->value ? 'selected' : '' }}>
                     {{ $location->name }}
                 </option>

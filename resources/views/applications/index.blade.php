@@ -35,6 +35,9 @@
                 <button type="submit" role="button"
                     class="py-0.5 px-2 mx-2 bg-blue-500 text-white rounded">Apply</button>
             </form>
+
+            @include('applications._pagination')
+
         </div>
 
         <div class="container mx-auto px-4 py-8 flex flex-col lg:flex-row justify-center gap-6">
@@ -74,17 +77,20 @@
                                     <x-ui.svg eye class="sm" />
                                 </x-ui.link>
                             </div>
-
-
                         </div>
                     @endforeach
                 </div>
             </div>
+            
         </div>
 
+        {{-- Display message if no vacancies are found --}}
+        @if ($applications->isEmpty())
+            <h4 class="text-gray-500">No applications matching the selected criteria!</h4>
+        @else
+            <div class="my-3 float-right">
+                @include('applications._pagination')
+            </div>
+        @endif
     </div>
-    </div>
-    </div>
-
-
 </x-layout>
