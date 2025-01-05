@@ -19,8 +19,8 @@ class ApplicationFactory extends Factory
     public function definition(): array
     {
         // Generate fake vacancies and users so i can reference them directly
-        $vacancy = Vacancy::factory()->create();  // Create and persist a Vacancy
-        $user = User::factory()->create();  // Create and persist a User
+        $vacancy = Vacancy::factory()->create();
+        $user = User::factory()->create();
 
         return [
             'name' => fake()->name(),

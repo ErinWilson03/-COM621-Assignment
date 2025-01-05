@@ -7,9 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class BaseUnitTest extends TestCase
 {
-
-    // Unit Test
-
     public function test_that_role_enum_has_four_cases(): void
     {
         // act
@@ -27,7 +24,6 @@ class BaseUnitTest extends TestCase
         $this->assertNotEquals(Role::ADMIN, $author);
         $this->assertNotEquals(Role::ADMIN, $guest);
         $this->assertNotEquals(Role::ADMIN, $user);
-
 
         $this->assertNotEquals(Role::AUTHOR, $admin);
         $this->assertNotEquals(Role::AUTHOR, $guest);

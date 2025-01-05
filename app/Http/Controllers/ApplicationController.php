@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Application;
 use App\Models\Vacancy;
 use App\Models\User;
-use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 use Illuminate\Support\Facades\Gate;
 use App\Enums\Role;
 

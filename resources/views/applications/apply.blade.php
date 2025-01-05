@@ -66,5 +66,4 @@
             </div>
         </form>
     </x-ui.card>
-
 </x-layout>

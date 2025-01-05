@@ -16,6 +16,7 @@
 
     </div>
 </div>
+
 {{-- Application Information --}}
 <x-ui.card class="mb-4 p-6">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -27,8 +28,8 @@
             </h3>
         </div>
 
+        <!-- Dates and Applicant Contact information-->
         <div class="col-span-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-            <!-- Dates -->
             <div class="flex items-center gap-2">
                 <x-ui.badge class="px-2 py-1 text-sm text-white bg-indigo-600 rounded">
                     Applied On:
@@ -42,7 +43,6 @@
                 <span class="text-gray-500 text-sm">{{ $application->updated_at }}</span>
             </div>
 
-            <!-- Contact info -->
             <div>
                 <h4 class="text-sm text-gray-700 font-medium">
                     Mobile: <span class="font-normal">{{ $application->mobile_number }}</span>
@@ -69,6 +69,7 @@
 
 
 <h2 class="text-3xl font-semibold text-blue-900 mb-4">Vacancy Details</h2>
+
 {{-- Vacancy Information --}}
 <x-ui.card class="mb-4">
     <div class="flex items-center gap-4 m-4">
@@ -87,7 +88,6 @@
 
     {{-- Company Logo and Name --}}
     <div class="flex items-center gap-4 m-4">
-
         <div class="flex items-center gap-4 w-1/3">
             <img src="{{ asset($vacancy->company->logo) }}" alt="{{ $vacancy->company->company_name }} Logo"
                 class="w-24 h-24 rounded-full object-cover shadow-md">
@@ -107,7 +107,6 @@
                 <x-ui.badge class="ml-2 text-sm">{{ $vacancy->vacancy_type }}</x-ui.badge>
             </div>
         </div>
-
     </div>
 
     {{-- Vacancy Information --}}

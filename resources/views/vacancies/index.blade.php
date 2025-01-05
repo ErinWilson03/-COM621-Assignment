@@ -180,9 +180,6 @@
                         @include('vacancies._pagination')
                     </div>
                 @endif
-
             </div>
-
-
         </div>
 </x-layout>

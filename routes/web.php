@@ -38,7 +38,7 @@ Route::put('/vacancies/{reference_number}', [VacancyController::class, 'update']
 Route::delete('/vacancies/{reference_number}', [VacancyController::class, 'destroy'])->name('vacancies.destroy');
 
 // Application Routes
-Route::get('/applications/apply/{reference_number}', [ApplicationController::class, 'apply'])->name('applications.apply'); 
+Route::get('/applications/apply/{reference_number}', [ApplicationController::class, 'apply'])->name('applications.apply');
 Route::get('/applications', [ApplicationController::class, 'index'])->name('applications.index');
 Route::get('/applications/{id}', [ApplicationController::class, 'show'])->name('applications.show');
 Route::get('/applications/{id}/edit', [ApplicationController::class, 'edit'])->name('applications.edit');

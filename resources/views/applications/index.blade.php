@@ -11,7 +11,6 @@
 
         @include('applications._search')
 
-
         {{-- Sorting --}}
         <div class="mt-6 flex justify-between items-center">
             <p class=" ml-4 text-sm text-gray-500">{{ $applicationCount }} applications found</p>
@@ -37,7 +36,6 @@
             </form>
 
             @include('applications._pagination')
-
         </div>
 
         <div class="container mx-auto px-4 py-8 flex flex-col lg:flex-row justify-center gap-6">
@@ -86,7 +84,8 @@
 
         {{-- Display message if no vacancies are found --}}
         @if ($applications->isEmpty())
-            <h4 class="text-gray-500">No applications matching the selected criteria!</h4>
+            <h4 class="text-blue-500">Hmm ... There are no applications which match the search.</h4>
+            <h5 class="text-gray-600">Check the spelling of the keyword, or try a new one!</h5>
         @else
             <div class="my-3 float-right">
                 @include('applications._pagination')

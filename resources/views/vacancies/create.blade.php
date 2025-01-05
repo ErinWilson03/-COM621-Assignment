@@ -48,7 +48,7 @@
                         @foreach (App\Enums\LocationEnum::cases() as $location)
                             <option value="{{ $location->value }}"
                                 {{ old('location', $vacancy->location) == $location->value ? 'selected' : '' }}>
-                                {{ $location->name }} 
+                                {{ $location->name }}
                             </option>
                         @endforeach
                     </select>
@@ -98,5 +98,4 @@
             </div>
         </form>
     </x-ui.card>
-
 </x-layout>

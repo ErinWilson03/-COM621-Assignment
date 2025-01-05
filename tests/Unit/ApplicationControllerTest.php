@@ -5,7 +5,6 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Application;
-use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ApplicationControllerTest extends TestCase
@@ -25,8 +24,8 @@ class ApplicationControllerTest extends TestCase
     }
 
     /*
-    * Testing my custom helper methods
-    */
+     * Testing my custom helper methods
+     */
     public function test_getApplicationsForUser_returns_correct_applications()
     {
         // Create a user and their applications
@@ -62,7 +61,7 @@ class ApplicationControllerTest extends TestCase
         // Mock the controller
         $controller = app(\App\Http\Controllers\ApplicationController::class);
 
-        // Retrieve applications for the user
+        // Attempt to retrieve applications for the first user
         $query = Application::query();
         $result = $controller->getApplicationsForUser($user, $query);
 

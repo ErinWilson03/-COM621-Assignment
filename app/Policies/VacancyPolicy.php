@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Enums\Role;
-use App\Models\Vacancy;
 use App\Models\User;
 
-class VacancyPolicy {
+class VacancyPolicy
+{
     /**
      * Only authors and admins can create vacancies
      */

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Vacancy;
 use App\Models\Company;
@@ -26,28 +25,30 @@ class VacancySeeder extends Seeder
 
         // Hard coding a vacancy which has already closed
         Vacancy::create([
-            "title" => "Senior Accounts Manager",
-            'company_id' => $companies->firstWhere('name', "Foster's Finance")->id,
-            "description" => "Manage and oversee accounts for top clients.",
-            "skills_required" => "Accounting, Financial Analysis, Team Management",
-            "application_open_date" => Carbon::createFromFormat('d-m-Y', "01-01-2025"),
-            "application_close_date" => Carbon::createFromFormat('d-m-Y', "20-04-2025"),
-            "location" => LocationEnum::InOffice->value,
-            "salary"=> "70,000",
-            "industry" => IndustryEnum::Finance->value,
+            "title" => "Software Engineer",
+            'company_id' => $companies->firstWhere('name', 'Tech Radar')->id,
+            "description" => "Develop scalable software solutions for enterprise clients.",
+            "skills_required" => "JavaScript, PHP, Laravel, API Integration",
+            // hard coding a deadline in the past to allow the deadline flag to appear         
+            "application_open_date" => Carbon::createFromFormat('d-m-Y', "01-12-2024"),
+            "application_close_date" => Carbon::createFromFormat('d-m-Y', "20-12-2024"),
+            "location" => LocationEnum::Remote->value,
+            "salary" => "40,000",
+            "industry" => IndustryEnum::Technology->value,
             "vacancy_type" => VacancyTypeEnum::FullTime->value,
-            "reference_number" => "VAC-812345",
+            "reference_number" => "VAC-889012",
         ]);
 
+        // Other vacancies
         Vacancy::create([
             "title" => "Cybersecurity Analyst",
             'company_id' => $companies->firstWhere('name', 'Security Sloth')->id,
             "description" => "Monitor and prevent security breaches across systems.",
             "skills_required" => "Cybersecurity, Ethical Hacking, Risk Assessment",
-            "application_open_date" => Carbon::createFromFormat('d-m-Y', "10-12-2024"),
-            "application_close_date" => Carbon::createFromFormat('d-m-Y', "08-02-2025"),
+            "application_open_date" => Carbon::createFromFormat('d-m-Y', "08-02-2025"),
+            "application_close_date" => Carbon::createFromFormat('d-m-Y', "08-04-2025"),
             "location" => LocationEnum::Hybrid->value,
-            "salary"=> "60,000",
+            "salary" => "60,000",
             "industry" => IndustryEnum::InformationSecurity->value,
             "vacancy_type" => VacancyTypeEnum::FullTime->value,
             "reference_number" => "VAC-856789",
@@ -62,25 +63,24 @@ class VacancySeeder extends Seeder
             'application_open_date' => $flagOpeningDate->format('Y-m-d H:i:s'),
             "application_close_date" => $flagClosingDate->format('Y-m-d H:i:s'),
             "location" => LocationEnum::InOffice->value,
-            "salary"=> "20,000",
+            "salary" => "20,000",
             "industry" => IndustryEnum::Technology->value,
             "vacancy_type" => VacancyTypeEnum::Internship->value,
             "reference_number" => "VAC-867890",
         ]);
 
         Vacancy::create([
-            "title" => "Software Engineer",
-            'company_id' => $companies->firstWhere('name', 'Tech Radar')->id,
-            "description" => "Develop scalable software solutions for enterprise clients.",
-            "skills_required" => "JavaScript, PHP, Laravel, API Integration",
-            // hard coding a deadline in the past to allow the deadline flag to appear         
-            "application_open_date" => Carbon::createFromFormat('d-m-Y', "01-12-2024"),
-            "application_close_date" => Carbon::createFromFormat('d-m-Y', "02-12-2024"),
-            "location" => LocationEnum::Remote->value,
-            "salary"=> "40,000",
-            "industry" => IndustryEnum::Technology->value,
+            "title" => "Senior Accounts Manager",
+            'company_id' => $companies->firstWhere('name', "Foster's Finance")->id,
+            "description" => "Manage and oversee accounts for top clients.",
+            "skills_required" => "Accounting, Financial Analysis, Team Management",
+            "application_open_date" => Carbon::createFromFormat('d-m-Y', "01-01-2025"),
+            "application_close_date" => Carbon::createFromFormat('d-m-Y', "20-04-2025"),
+            "location" => LocationEnum::InOffice->value,
+            "salary" => "70,000",
+            "industry" => IndustryEnum::Finance->value,
             "vacancy_type" => VacancyTypeEnum::FullTime->value,
-            "reference_number" => "VAC-889012",
+            "reference_number" => "VAC-812345",
         ]);
     }
 }

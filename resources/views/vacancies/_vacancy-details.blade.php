@@ -22,6 +22,7 @@
                 </div>
             </div>
 
+            {{-- Application Button --}}
             @can('apply', App\Models\Application::class)
                 <div class="w-1/3">
                     <a href="{{ route('applications.apply', $vacancy->reference_number) }}"
@@ -32,7 +33,6 @@
             @endcan
         </div>
     </x-ui.card>
-
 
     <div class="flex gap-2 mt-4">
         <div class="w-1/2">

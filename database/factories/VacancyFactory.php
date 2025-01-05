@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Vacancy;
 use App\Models\Company;
 use App\Enums\VacancyTypeEnum;
 use App\Enums\IndustryEnum;
@@ -34,7 +33,7 @@ class VacancyFactory extends Factory
         $referenceNumber = 'VAC-' . strtoupper(Str::random(6));
 
         // Generate a fake company
-        $company = Company::factory()->create();  // Create and persist a User
+        $company = Company::factory()->create();
 
         return [
             'title' => $title,

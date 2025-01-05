@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use App\Models\Vacancy;
 use App\Models\Company;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -13,10 +12,8 @@ class VacancyTest extends TestCase
 
     public function test_vacancy_is_successfully_created_with_valid_data(): void
     {
-        // Create a company to associate with the vacancy
         $company = Company::factory()->create();
 
-        // Prepare valid vacancy data
         $vacancyData = [
             'title' => 'Software Developer',
             'company_id' => $company->id,
@@ -46,10 +43,9 @@ class VacancyTest extends TestCase
 
     public function test_validation_fails_when_title_is_missing(): void
     {
-        // Create a company to associate with the vacancy
         $company = Company::factory()->create();
 
-        // Prepare vacancy data without title
+        // Data has no title, which is a required field
         $vacancyData = [
             'company_id' => $company->id,
             'description' => 'Develop high-quality software.',
@@ -72,4 +68,3 @@ class VacancyTest extends TestCase
         $this->assertDatabaseCount('vacancies', 0);
     }
 }
-

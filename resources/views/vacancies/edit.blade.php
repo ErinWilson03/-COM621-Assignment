@@ -2,7 +2,7 @@
     <x-ui.breadcrumb class="my-3" :crumbs="[
         'Home' => route('home'),
         'Vacancies' => route('vacancies.index'),
-        $vacancy->reference_number => route('vacancies.show',  $vacancy->reference_number),
+        $vacancy->reference_number => route('vacancies.show', $vacancy->reference_number),
         'Edit' => '',
     ]" />
 
@@ -11,7 +11,8 @@
     </x-ui.header>
 
     <x-ui.card>
-        <form method="POST" action="{{ route('vacancies.update',  $vacancy->reference_number) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('vacancies.update', $vacancy->reference_number) }}"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -19,7 +20,8 @@
 
             <div class="mt-4">
                 <x-ui.button variant="blue" type="submit">Save</x-ui.button>
-                <x-ui.link variant="blue" href="{{ route('vacancies.show',  $vacancy->reference_number) }}">Cancel</x-ui.link>
+                <x-ui.link variant="blue"
+                    href="{{ route('vacancies.show', $vacancy->reference_number) }}">Cancel</x-ui.link>
             </div>
         </form>
     </x-ui.card>

@@ -7,7 +7,6 @@ use App\Models\Vacancy;
 use App\Enums\IndustryEnum;
 use App\Enums\LocationEnum;
 use App\Enums\VacancyTypeEnum;
-use App\Http\Requests\UpdateVacancyRequest;
 use App\Http\Requests\VacancyRequest;
 use App\Models\Company;
 use Illuminate\Validation\Rule;
@@ -40,7 +39,6 @@ class VacancyController extends Controller
 
         $vacancies = $this->addDeadlineWarnings($vacancies);
 
-
         // Return the view with necessary data
         return view('vacancies.index', [
             'vacancies' => $vacancies,
@@ -62,7 +60,7 @@ class VacancyController extends Controller
         }
         $vacancy = Vacancy::where('reference_number', $vacancy_reference)->firstOrFail();
         $company = Company::where('id', $vacancy->company_id)->first();
-        
+
         return view('vacancies.show', ['vacancy' => $vacancy, 'company' => $company]);
     }
 
@@ -114,8 +112,6 @@ class VacancyController extends Controller
 
         return redirect()->route('vacancies.index')->with('success', 'Vacancy created successfully!');
     }
-
-
 
     /**
      * Show the form for editing the specified resource.

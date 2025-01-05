@@ -6,8 +6,8 @@ use App\Enums\Role;
 use App\Models\User;
 
 class ApplicationPolicy
-{    
-/**
+{
+    /**
      * Only a user can apply for a vacancy
      */
     public function apply(User $user): bool
@@ -27,7 +27,6 @@ class ApplicationPolicy
      */
     public function view(User $user): bool
     {
-        // everyone but a guest can view a vacancy's application form
         return $user->role != Role::GUEST;
     }
 
@@ -38,6 +37,4 @@ class ApplicationPolicy
     {
         return $user->role == Role::ADMIN || $user->role == Role::USER;
     }
-
-    
 }
